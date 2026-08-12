@@ -5,19 +5,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title><%= fruit.name %></title> 
   </head>
   <body>
+    
     <h1><%= fruit.name %></h1>
+    <div class="fruit-details">
     <%if(fruit.isReadyToEat){%>
         <p>Yummy Yummy get in my Tummy</p>
     <%}else{%>
         <p>Yuck!!! needs more time</p>
     <%}%>
 
-    <form action="/fruits/<%=fruit._id%>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
+    <div class="fruit-actions">
+    <form 
+    class="delete-form"
+    action="/fruits/<%=fruit._id%>?_method=DELETE" 
+    method="POST">
+        <button class="delete-button" type="submit">Delete</button>
     </form>
-    <a href="/fruits/<%= fruit._id%>/edit">Edit <%= fruit.name%></a>
+ 
+    <a class="edit-link" href="/fruits/<%= fruit._id%>/edit">Edit <%= fruit.name%></a>
+    </div>
+    <a class="fruits-index-link" href="/fruits">
+    <div class="index-link-text">Back to Fruits</div>
+  </a>
   </body>
 </html>

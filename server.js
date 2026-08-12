@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const path = require('path');
 const methodOverride = require('method-override')
 dotenv.config();
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.urlencoded({extended: false}));
 app.use(morgan('dev'));
 app.use(methodOverride('_method'))
+app.use(express.static(path.join(__dirname, "public")));
 
 mongoose.connect(process.env.MONGODB_URL);
 mongoose.connection.on("connected", () => {
